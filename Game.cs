@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -34,10 +35,15 @@ namespace BattleShips
         }
         public void PlayGame()
         {
+            Console.Clear();
+            Console.WriteLine("- - P L A Y E R - -");
+            playerBoard.Display(false);
+            Console.WriteLine();
+            Console.WriteLine("- - E N E M Y S - -");
+            enemyBoard.Display(true);
             bool GameOver = false;
-            while (GameOver != false)
+            while (GameOver == false)
             {
-                Console.WriteLine("\nTwoja tura:");
                 player.TakeTurn(enemyBoard);
 
                 if(enemyBoard.NoMoreShips() == true)
@@ -47,7 +53,6 @@ namespace BattleShips
                     continue;
                 }
 
-                Console.WriteLine("\n Tura przeciwnika:");
                 aienemy.TakeTurn(playerBoard);
 
                 if (playerBoard.NoMoreShips() == true)
@@ -55,6 +60,13 @@ namespace BattleShips
                     Console.WriteLine("P R Z E G R A L E S");
                     GameOver = true;
                 }
+                Console.Clear();
+                Console.WriteLine("- - P L A Y E R - -");
+                playerBoard.Display(false);
+                Console.WriteLine();
+                Console.WriteLine("- - E N E M Y S - -");
+                enemyBoard.Display(true);
+
             }
         }
     }
