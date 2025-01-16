@@ -13,7 +13,7 @@ namespace BattleShips
 
         public void PlaceShips()
         {
-            for (int i = 1; i < 4; i++)
+            for (int i = 1; i <= 4; i++)
             {
                 bool placed = false;
                 while(!placed)
