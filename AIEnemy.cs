@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace BattleShips
 {
@@ -30,13 +30,9 @@ namespace BattleShips
 
         public void TakeTurn(Board playerBoard)
         {
-            bool validShot = false;
-            while(!validShot)
-            {
                 int x = random.Next(0, 10);
                 int y = random.Next(0, 10);
-                validShot = playerBoard.FireAt(x, y);
-            }
+                playerBoard.FireAt(x, y);
         }
     }
 }
