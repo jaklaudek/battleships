@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace BattleShips
 {
-    public class Player : Board
+    public class Player
     {
         private Board board;
 
@@ -13,7 +13,7 @@ namespace BattleShips
 
         public void PlaceShips()
         {
-            for (int i = 1; i <= 4; i++)
+            for (int i = 1; i <= 2; i++)
             {
                 bool placed = false;
                 while(!placed)
@@ -36,18 +36,37 @@ namespace BattleShips
         public void TakeTurn(Board enemyBoard)
         {
             bool validShot = false;
+            bool IsShot;
             while (!validShot)
             {
                 Console.WriteLine("Podaj współrzędną X do strzału: ");
                 int x = int.Parse(Console.ReadLine());
                 Console.WriteLine("Podaj współrzędną Y do strzału: ");
                 int y = int.Parse(Console.ReadLine());
-
-                validShot = enemyBoard.FireAt(x, y);
-                if (!validShot)
-                    Console.WriteLine("Pudło");
+                if (x > 10)
+                {
+                    Console.WriteLine("Bledne dane");
+                    validShot = true;
+                }
+                else if(y > 10)
+                {
+                    Console.WriteLine("Bledne dane");
+                    validShot = true;
+                }
                 else
-                    Console.WriteLine("Trafiony");
+                {
+                    IsShot = enemyBoard.FireAt(x, y);
+                    if (!IsShot)
+                    {
+                        Console.WriteLine("Pudło");
+                        validShot = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Trafiony");
+                        validShot = true;
+                    }
+                }
             }
         }
     }
