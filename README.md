@@ -3,6 +3,7 @@
 Diagram relacji
 
 Game
+
 ├── Player
 │   └── Board (playerBoard)
 ├── AIEnemy
