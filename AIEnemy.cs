@@ -35,7 +35,7 @@ namespace BattleShips
             {
                 int x = random.Next(0, 10);
                 int y = random.Next(0, 10);
-                validShot = playerBoard.TakeTurn(x, y);
+                validShot = playerBoard.FireAt(x, y);
             }
         }
     }
